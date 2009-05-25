@@ -1,0 +1,29 @@
+/* ADMINHOMEPAGE */
+
+div#admin__version {
+  float: left;
+}
+div#admin__version  div{
+  padding-top: 8px;
+}
+div#admin__tasks  {
+  padding-left: 47px;
+  width: 60%;
+  float: left;
+}
+div#admin__tasks div  {
+  padding: 8px 1px 8px 21px;
+}
+div#admin__acl    {
+  background: transparent url(images/acl.png) 0px 8px no-repeat;
+}
+div#admin__plugin   {
+  background: transparent url(images/plugin.png) 0px 8px no-repeat;
+}
+div#admin__usermanager    {
+  background: transparent url(images/usermanager.png) 0px 8px no-repeat;
+}
+div#admin__config    {
+  background: transparent url(images/config.png) 0px 8px no-repeat;
+}
+
