@@ -3,7 +3,7 @@
  * Plugin for a nicer Admin main page with some layout
  *
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * @author     Håkan Sandell <haka.sandell[at]home.se>
+ * @author     Håkan Sandell <hakan.sandell@home.se>
  */
 
 // must be run within Dokuwiki
@@ -22,11 +22,11 @@ class action_plugin_adminhomepage extends DokuWiki_Action_Plugin {
      */
     function getInfo() {
     return array (
-            'author' => 'Håkan Sandell',
-            'email'  => 'hakan.sandell[at]home.se',
-            'date'   => '2008-03-15',
+            'author' => 'H&aring;kan Sandell',
+            'email'  => 'hakan.sandell@home.se',
+            'date'   => @file_get_contents(DOKU_PLUGIN.'adminhomepage/VERSION'),
             'name'   => 'AdminHomePage',
-            'desc'   => 'Admin home page with additional layout',
+            'desc'   => 'Replacement for "Admin" page with better usability',
             'url'    => 'http://www.dokuwiki.org/plugin:adminhomepage'
         );
     }
@@ -91,8 +91,10 @@ class action_plugin_adminhomepage extends DokuWiki_Action_Plugin {
             ptln('    <div id="admin__acl"><a href="'.wl($ID, 'do=admin&amp;page=acl').'">'.$menu['acl']['prompt'].'</a></div>');
             ptln('    <div id="admin__plugin"><a href="'.wl($ID, 'do=admin&amp;page=plugin').'">'.$menu['plugin']['prompt'].'</a></div>');
             ptln('    <div id="admin__config"><a href="'.wl($ID, 'do=admin&amp;page=config').'">'.$menu['config']['prompt'].'</a></div>');
+        }else{
+            ptln('&nbsp');
         }
-        ptln('  &nbsp</div>');
+        ptln('  </div>');
         ptln('  <div id="admin__version">');
         ptln('    <div><b>'.$this->getLang('wiki_version').'</b><br/>'.getVersion().'</div>');
         ptln('    <div><b>'.$this->getLang('php_version').'</b><br/>'.phpversion().'</div>');
