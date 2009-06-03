@@ -1,13 +1,13 @@
-<?php
+ï»¿<?php
 /**
  * swedish language file for AdminHomePage plugin
  *
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * @author     Håkan Sandell <hakan.sandell[at]mydata.se>
+ * @author     HÃ¥kan Sandell <hakan.sandell[at]mydata.se>
  */
 
 $lang['pageheader']            = 'Administration';
 $lang['wiki_version']          = 'DokuWiki version:';
 $lang['php_version']           = 'PHP version:';
 $lang['more_adminheader']      = 'Fler Administrativa Insticksmoduler';
-$lang['more_admintext']        = 'Nedan hittar du en lista över administrativa uppgifter i denna DokuWiki. Flera kan läggas till via [[doku>plugins?plugintype=2|admin insticksmoduler]].';
+$lang['more_admintext']        = 'Nedan hittar du en lista Ã¶ver administrativa uppgifter i denna DokuWiki. Flera kan lÃ¤ggas till via [[doku>plugins?plugintype=2|admin insticksmoduler]].';

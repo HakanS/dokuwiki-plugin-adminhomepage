@@ -66,6 +66,7 @@ class action_plugin_adminhomepage extends DokuWiki_Action_Plugin {
         global $INFO;
         global $lang;
         global $conf;
+        global $auth;
 
         // build menu of admin functions from the plugins that handle them
         $pluginlist = plugin_list('admin');
@@ -82,12 +83,22 @@ class action_plugin_adminhomepage extends DokuWiki_Action_Plugin {
                             );
         }
 
+        // check if UserManager available
+        $usermanageravailable = true;
+        if (!isset($auth)) {
+          $usermanageravailable = false;
+        } else if (!$auth->canDo('getUsers')) {
+          $usermanageravailable = false;
+        }
+
         // output main tasks
         ptln('<h1>'.$this->getLang('pageheader').'</h1>');
         ptln('<div id="admin__maintable">');
         ptln('  <div id="admin__tasks">');
         if ($INFO['isadmin']) {
-            ptln('    <div id="admin__usermanager"><a href="'.wl($ID, 'do=admin&amp;page=usermanager').'">'.$menu[usermanager]['prompt'].'</a></div>');
+            if ($usermanageravailable) {
+                ptln('    <div id="admin__usermanager"><a href="'.wl($ID, 'do=admin&amp;page=usermanager').'">'.$menu[usermanager]['prompt'].'</a></div>');
+            }
             ptln('    <div id="admin__acl"><a href="'.wl($ID, 'do=admin&amp;page=acl').'">'.$menu['acl']['prompt'].'</a></div>');
             ptln('    <div id="admin__plugin"><a href="'.wl($ID, 'do=admin&amp;page=plugin').'">'.$menu['plugin']['prompt'].'</a></div>');
             ptln('    <div id="admin__config"><a href="'.wl($ID, 'do=admin&amp;page=config').'">'.$menu['config']['prompt'].'</a></div>');
@@ -103,7 +114,7 @@ class action_plugin_adminhomepage extends DokuWiki_Action_Plugin {
 
         // remove the four main plugins
         unset($menu['acl']);
-        unset($menu['usermanager']);
+        if ($usermanageravailable) unset($menu['usermanager']);
         unset($menu['config']);
         unset($menu['plugin']);
   
